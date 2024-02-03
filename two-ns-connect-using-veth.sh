@@ -15,14 +15,11 @@ sudo ip link set tap2 netns blue
 sudo ip netns exec red ip link set dev tap1 up
 sudo ip netns exec blue ip link set dev tap2 up
 
-# Assign IP addresses (adjust as needed)
+# Assign IP addresses
 sudo ip netns exec red ip addr add 192.168.1.1/24 dev tap1
 sudo ip netns exec blue ip addr add 192.168.1.2/24 dev tap2
 
-# Print confirmation message
-sudo echo "Namespaces and veth pair created successfully!"
-
-# Optional: Test connectivity
+# Test connectivity
 sudo ip netns exec red ping 192.168.1.2
 sudo ip netns exec blue ping 192.168.1.1
 
